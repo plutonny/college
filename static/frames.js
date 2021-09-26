@@ -100,29 +100,29 @@ async function theme(type) {
 
         if (type === 0) {
             if (localStorage.getItem('theme').includes('light')) { 
-                try { document.getElementById('mobile_theme_button').src = 'static/sun.png'; } catch { console.log('Warning: theme button is not enabled!'); };
+                try { document.getElementById('mobile_theme_button').src = 'static/sun.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
                 document.getElementById('theme_css').innerHTML = dark; 
                 localStorage.setItem('theme','dark'); 
             } else if (localStorage.getItem('theme').includes('dark')) { 
-                try { document.getElementById('mobile_theme_button').src = 'static/moon.png'; } catch { console.log('Warning: theme button is not enabled!'); };
+                try { document.getElementById('mobile_theme_button').src = 'static/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
                 document.getElementById('theme_css').innerHTML = light; 
                 localStorage.setItem('theme','light'); 
             } else {
                 console.log('Error: theme are undefined! Setting theme to light...');
-                try { document.getElementById('mobile_theme_button').src = 'static/moon.png'; } catch { console.log('Warning: theme button is not enabled!'); };
+                try { document.getElementById('mobile_theme_button').src = 'static/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
                 document.getElementById('theme_css').innerHTML = light; 
                 localStorage.setItem('theme','light'); 
             };
         }; if (type === 1) {
             if (localStorage.getItem('theme').includes('light')) { 
-                try { document.getElementById('mobile_theme_button').src = 'static/moon.png'; } catch { console.log('Warning: theme button is not enabled!'); };
+                try { document.getElementById('mobile_theme_button').src = 'static/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
                 document.getElementById('theme_css').innerHTML = light;
             } else if (localStorage.getItem('theme').includes('dark')) { 
-                try { document.getElementById('mobile_theme_button').src = 'static/sun.png'; } catch { console.log('Warning: theme button is not enabled!'); };
+                try { document.getElementById('mobile_theme_button').src = 'static/sun.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
                 document.getElementById('theme_css').innerHTML = dark; 
             } else {
                 console.log('Error: theme are undefined! Setting theme to light...');
-                try { document.getElementById('mobile_theme_button').src = 'static/moon.png';  } catch { console.log('Warning: theme button is not enabled!'); };
+                try { document.getElementById('mobile_theme_button').src = 'static/moon.svg';  } catch { console.log('Warning: theme button is not enabled!'); };
                 document.getElementById('theme_css').innerHTML = light; 
                 localStorage.setItem('theme','light'); 
             }
@@ -132,7 +132,7 @@ async function theme(type) {
         await sleep(15);
         try {
             localStorage.setItem('theme','light');
-            try { document.getElementById('mobile_theme_button').src = 'static/moon.png'; } catch { console.log('Warning: theme button is not enabled!'); };
+            try { document.getElementById('mobile_theme_button').src = 'static/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
             document.getElementById('theme_css').innerHTML = light;
         } catch (e) {
             error(601, 'CRITICAL ERROR: theme cannot load, redirect to error page (' + e + ')');
