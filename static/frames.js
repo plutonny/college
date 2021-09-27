@@ -13,7 +13,7 @@ dt = new Date();
     for example: 'homep' returned main page
 */
 async function page(current) {
-    if (current === 'homep') { header('главная', true); greetings(); output(true, 'static/general.html'); output(true, 'VERSION.html') }
+    if (current === 'general') { header('главная', true); greetings(); output(true, 'static/general.html'); output(true, 'VERSION.html') }
     else { error(604, 'ERROR: cant find file in page function'); };
     await sleep(50);
     theme(1);
@@ -56,17 +56,17 @@ function output(include, data) {
 
 /* 
     ERRORS:
-    404 - page not found with innerHTML function
-    601 - error in theme function, see console log to additional information
-    604 - error in page or support function (cant find instruction to response)
+    602 - innerHTML
+    601 - theme
+    604 - page
+    603 - output
+    see console for additional information
 */
-function error(errorcode, text) {
+async function error(errorcode, text) {
     var s = 'static/errors/' + errorcode + '.html';
-    document.write('<h1 style="text-align: center; margin-top: 176px;">Произошла ошибка!</h1>');
-    document.write('<div style="margin-top:32px; display: flex; justify-content: center;"><button style="border: 1px solid var(--main-text-color); border-radius: 10px; height: 32px; width: 140px; cursor: pointer; background-color: var(--main-bg-volor);s" onclick="rel()">На главную</button></div>');
-    document.write('<h3 style="text-align: center; margin-top: 32px;">Если вы сюда попали, пожалуйста напишите разработчику: <a style="color: blue;" href="https://plutonny.github.io/author/links.html">plutonny/links</a> или попробуйте перезагрузить страницу.</h3>');
-    output(false, text)
-    output(true, s)
+    output(false, text);
+    output(true, s);
+    if (errorcode != 601) {await sleep(50);theme(1)}
 }
 
 /* 
@@ -176,4 +176,4 @@ function rel() { console.log('RELOADING PAGE!'); window.location.reload(); }
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 /* Including HTML function (dont touch this!) */
-function includeHTML() { var z, i, elmnt, file, xhttp;z = document.getElementsByTagName("*");for (i = 0; i < z.length; i++) {elmnt = z[i];file = elmnt.getAttribute("include-html");if (file) {xhttp = new XMLHttpRequest();xhttp.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {elmnt.innerHTML = this.responseText;};if (this.status == 404) {error(404);};elmnt.removeAttribute("include-html");includeHTML();};};xhttp.open("GET", file, true);xhttp.send();return } } }
+function includeHTML() { try { var z, i, elmnt, file, xhttp;z = document.getElementsByTagName("*");for (i = 0; i < z.length; i++) {elmnt = z[i];file = elmnt.getAttribute("include-html");if (file) {xhttp = new XMLHttpRequest();xhttp.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {elmnt.innerHTML = this.responseText;};if (this.status == 404) {error(602, 'ERROR: innerHTML function cant find file');};elmnt.removeAttribute("include-html");includeHTML();};};xhttp.open("GET", file, true);xhttp.send();return } } } catch (e) { error(602, e) } }
