@@ -144,17 +144,18 @@ async function theme(type) {
 function greetings() {
     var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
     var outtext;
-    if (dt.getHours() <= 12 && dt.getHours() > 5) {
-        outtext = 'Доброе утро!'
-    } else if (dt.getHours() <= 18 && dt.getHours() > 12) {
-        outtext = 'Добрый день!'
-    } else if (dt.getHours() <= 23 && dt.getHours() > 18) {
-        outtext = 'Добрый вечер!'
-    } else {
-        outtext = 'Доброй ночи!'
-    }
-    output(false, `<div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${outtext}</p></div>`)
-    output(false, `<div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${getWeek()} неделя</p></div>`)
+         if (dt.getHours() <= 12 && dt.getHours() > 5)  { outtext = 'Доброе утро!' } 
+    else if (dt.getHours() <= 18 && dt.getHours() > 12) { outtext = 'Добрый день!' } 
+    else if (dt.getHours() <= 23 && dt.getHours() > 18) { outtext = 'Добрый вечер!'} 
+    else                                                { outtext = 'Доброй ночи!' }
+    output(false, `
+    <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${outtext}</p></div>
+    <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${getWeek()} неделя</p></div>
+    <div class="table_pos">
+    <a href="https://docs.google.com/spreadsheets/d/12NHcO3C-BL2vZ5B64_2nW4RoH-zKdDL4Ixj2MkmWiag/edit?usp=sharing" 
+    style="font-size: 32px;">Таблица посещаемости</a>
+    </div>
+    `)
 }
 
 /*
