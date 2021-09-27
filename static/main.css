@@ -13,7 +13,7 @@
 
 /* General sizes */
 html, body { background-color: var(--main-bg-color); margin: 0; }
-a { position: relative; cursor: pointer; line-height: 1; text-decoration: none; }
+a { text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p, a, b, td, div, li, button { color: var(--main-text-color); font-family: 'Google Sans'; word-wrap: break-word; }
 h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, p::selection, a::selection, b::selection, td::selection, div::selection, svg::selection, li::selection { background-color: #85858585; }
 h1::-moz-selection, h2::-moz-selection, h3::-moz-selection, h4::-moz-selection, h5::-moz-selection, h6::-moz-selection, p::-moz-selection, a::-moz-selection, b::-moz-selection, td::-moz-selection, div::-moz-selection, svg::-moz-selection, li::-moz-selection { background-color: #858585; }
@@ -40,8 +40,9 @@ div.button_page { border-radius: 20px; margin: 8px; padding-bottom: 64px; paddin
     .theme_header_button_mobile { display: none; }
 
     .header {  height: 66px; }
-    a.logo_text_header:after { display: block; position: absolute; left: 0; width: 0; height: 2px; content: ''; transition: width 0.5s ease-out; }
-    a.logo_text_header:hover:after, a.logo_text_header:focus:after { transition: 0.5s; width: 100%; }
+    .greetings { margin-top: 64px; margin-left: 48px; }
+    .dateweek { margin-left: 48px; }
+    .table_pos { text-align: center; margin-top: 64px; }
 } @media (max-width: 600px) { /* Sizes for MOBILE */
 
     /* Setting colors */
@@ -62,4 +63,7 @@ div.button_page { border-radius: 20px; margin: 8px; padding-bottom: 64px; paddin
 
     .header {  height: 54px; }
     h1.helper_text { font-size: 32px; text-align: center; padding-top: 32px; padding-bottom: 32px; }
-    }
+    .greetings { margin-top: 48px; margin-left: 24px; }
+    .dateweek { margin-left: 24px; }
+    .table_pos { margin-top: 48px; margin-left: 24px; }
+}
