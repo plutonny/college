@@ -13,7 +13,7 @@ dt = new Date();
     for example: 'homep' returned main page
 */
 async function page(current) {
-    if (current === 'general') { header('главная', true); greetings(); output(true, 'static/general.html'); output(true, 'VERSION.html') }
+    if (current === 'general') { header('главная', true); home(); output(true, 'VERSION.html') }
     else { error(604, 'ERROR: cant find file in page function'); };
     await sleep(50);
     theme(1);
@@ -141,7 +141,7 @@ async function theme(type) {
     Greetings function
     output on page greetings and week (yellow or green)
 */
-function greetings() {
+function home() {
     var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
     var outtext;
          if (dt.getHours() <= 12 && dt.getHours() > 5)  { outtext = 'Доброе утро!' } 
