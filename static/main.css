@@ -42,7 +42,7 @@ div.button_page { border-radius: 20px; margin: 8px; padding-bottom: 64px; paddin
     .header {  height: 66px; }
     .greetings { margin-top: 64px; margin-left: 48px; }
     .dateweek { margin-left: 48px; }
-    .table_pos { text-align: center; margin-top: 64px; }
+    .support_table { text-align: center; margin-top: 64px; }
 } @media (max-width: 600px) { /* Sizes for MOBILE */
 
     /* Setting colors */
@@ -65,5 +65,5 @@ div.button_page { border-radius: 20px; margin: 8px; padding-bottom: 64px; paddin
     h1.helper_text { font-size: 32px; text-align: center; padding-top: 32px; padding-bottom: 32px; }
     .greetings { margin-top: 48px; margin-left: 24px; }
     .dateweek { margin-left: 24px; }
-    .table_pos { margin-top: 48px; margin-left: 24px; }
+    .support_table { margin-top: 48px; margin-left: 24px; }
 }

@@ -10,7 +10,7 @@ dt = new Date();
 /* 
     Main function, create a page 
     current - type of page returned now
-    for example: 'homep' returned main page
+    for example: 'general' returned main page
 */
 async function page(current) {
     if (current === 'general') { header('главная', true); home(); output(true, 'VERSION.html') }
@@ -46,7 +46,7 @@ function header(text, enableTheme) {
 */
 function output(include, data) {
     if (include) { try {
-        document.write('<div include-html="' + data + '"></div>'); includeHTML(); 
+        document.write('<div include-html="' + data + '"></div>'); pageSet('include'); 
     } catch (e) {
         error(603, 'ERROR: cant find current file')
     } }
@@ -66,7 +66,7 @@ async function error(errorcode, text) {
     var s = 'static/errors/' + errorcode + '.html';
     output(false, text);
     output(true, s);
-    if (errorcode != 601) {await sleep(50);theme(1)}
+    if (errorcode != 601) { await sleep(50); theme(1) }
 }
 
 /* 
@@ -150,31 +150,30 @@ function home() {
     else                                                { outtext = 'Доброй ночи!' }
     output(false, `
     <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${outtext}</p></div>
-    <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${getWeek()} неделя</p></div>
-    <div class="table_pos">
-    <a href="https://docs.google.com/spreadsheets/d/12NHcO3C-BL2vZ5B64_2nW4RoH-zKdDL4Ixj2MkmWiag/edit?usp=sharing" 
-    style="font-size: 32px;">Таблица посещаемости</a>
+    <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${pageSet('week')} неделя</p></div>
+    <div class="support_table">
+        <a href="https://docs.google.com/spreadsheets/d/12NHcO3C-BL2vZ5B64_2nW4RoH-zKdDL4Ixj2MkmWiag/edit" 
+        style="font-size: 32px;">Таблица посещаемости</a>
+        <button onclick="pageSet('tablepos')">Таблица посещаемости</button>
     </div>
     `)
 }
 
 /*
-    Get week function
-    returned week ('желтая' or 'зеленая')
+    PageSet function
+    settings - setting function:
+    "rel" - reload page
+    "tablepos" - redirect to table group
+    "include" - include HTML
+    "week" - returned week ('желтая' or 'зеленая')
 */
-function getWeek() {
-    var oneJan = new Date(currentdate.getFullYear(),0,1);
-    var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
-    var result = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
-    if (result % 2 == 1) {return 'желтая'}
-    else {return 'зеленая'}
+function pageSet(settings) {
+         if (settings == 'tablepos') { location.replace("https://docs.google.com/spreadsheets/d/12NHcO3C-BL2vZ5B64_2nW4RoH-zKdDL4Ixj2MkmWiag/edit") }
+    else if (settings == 'rel')      { console.log('RELOADING PAGE!'); window.location.reload(); }
+    else if (settings == 'week')     { var oneJan = new Date(currentdate.getFullYear(),0,1); var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000)); var result = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7); if (result % 2 == 1) {return 'желтая'} else {return 'зеленая'} }
+    else if (settings == 'include')  { try { var z, i, elmnt, file, xhttp;z = document.getElementsByTagName("*");for (i = 0; i < z.length; i++) {elmnt = z[i];file = elmnt.getAttribute("include-html");if (file) {xhttp = new XMLHttpRequest();xhttp.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {elmnt.innerHTML = this.responseText;};if (this.status == 404) {error(602, 'ERROR: innerHTML function cant find file');};elmnt.removeAttribute("include-html");pageSet('include');};};xhttp.open("GET", file, true);xhttp.send();return } } } catch (e) { error(602, e) } }
+    else                             { output(false, 'ERROR: pageSet function not found instruction to "' + settings + '"') }
 }
-
-/* Reload function */
-function rel() { console.log('RELOADING PAGE!'); window.location.reload(); }
 
 /* Sleep function (dont touch this!) */
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-
-/* Including HTML function (dont touch this!) */
-function includeHTML() { try { var z, i, elmnt, file, xhttp;z = document.getElementsByTagName("*");for (i = 0; i < z.length; i++) {elmnt = z[i];file = elmnt.getAttribute("include-html");if (file) {xhttp = new XMLHttpRequest();xhttp.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {elmnt.innerHTML = this.responseText;};if (this.status == 404) {error(602, 'ERROR: innerHTML function cant find file');};elmnt.removeAttribute("include-html");includeHTML();};};xhttp.open("GET", file, true);xhttp.send();return } } } catch (e) { error(602, e) } }
