@@ -184,7 +184,7 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 function serw() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/static/service-worker.js').then(function(registration) {
+            navigator.serviceWorker.register('/static/manifest/service-worker.js').then(function(registration) {
                 // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
           }, function(err) {
