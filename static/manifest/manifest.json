@@ -19,7 +19,7 @@
       }
     ],
    
-    "start_url": "/home.html",
+    "start_url": "/college/home.html",
     "background_color": "#7ACCE5",
     "theme_color": "#7ACCE5",
     "orientation": "any",
