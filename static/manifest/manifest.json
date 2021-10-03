@@ -3,17 +3,17 @@
     "name": "Сайт группы КСК-11",
     "icons": [
       {
-        "src":"static/images/icon-m.png",
+        "src":"images/icon-m.png",
         "sizes": "48x48",
         "type": "image/png"
       },
       {
-        "src":"static/images/icon-xl.png",
+        "src":"images/icon-xl.png",
         "sizes": "96x96",
         "type": "image/png"
       },
       {
-        "src":"static/images/icon-xxl.png",
+        "src":"images/icon-xxl.png",
         "sizes": "512x512",
         "type": "image/png"
       }
