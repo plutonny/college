@@ -8,8 +8,13 @@
         "type": "image/png"
       },
       {
-        "src":"/static/images/icon-b.png",
+        "src":"/static/images/icon-xl.png",
         "sizes": "96x96",
+        "type": "image/png"
+      },
+      {
+        "src":"/static/images/icon-xxl.png",
+        "sizes": "512x512",
         "type": "image/png"
       }
     ],
