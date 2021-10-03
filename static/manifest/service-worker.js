@@ -27,7 +27,7 @@ self.addEventListener('install', function(event) {
            caches.open(CACHE_NAME)
                .then(function(cache) {
                    // Получаем данные из манифеста (они кэшируются)
-                   fetch('/college/static/manifest/manifest.json')
+                   fetch('static/manifest/manifest.json')
                        .then(response => {
                            response.json()
                        })
