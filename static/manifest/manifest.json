@@ -20,7 +20,7 @@
     ],
    
     "start_url": "/college/home.html",
-    "background_color": "#151515",
+    "background_color": "#101528",
     "theme_color": "#000000",
     "orientation": "any",
     "display": "standalone"
