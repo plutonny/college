@@ -73,6 +73,19 @@ async function error(errorcode, text) {
 */
 async function theme(type) {
     try {
+    var folder0 = localStorage.getItem('theme');
+    var folder1;
+
+    if (localStorage.getItem('theme').includes('light')) { 
+        folder1 = 'dark'
+    } else if (localStorage.getItem('theme').includes('dark')) { 
+        folder1 = 'light'
+    } else {
+        console.log('Warn: theme are undefined! Setting theme to light...');
+        localStorage.setItem('theme','light');
+
+    }
+
     var dark = ':root {\
         --main-text-color: #f5f5f5;\
         --active-text-color: #bbbbbb;\
@@ -96,40 +109,43 @@ async function theme(type) {
     }';
 
     if (type === 0) {
+        try { document.getElementById('mobile_theme_button').src = `static/images/${folder0}/theme.svg`; } catch { console.log('Warning: theme button is not enabled!'); };
+        try { 
+            document.getElementById('timetable_support').src = `static/images/${folder0}/timetable.svg`;
+            document.getElementById('gtable_support').src = `static/images/${folder0}/gtable.svg`;
+            document.getElementById('other_support').src = `static/images/${folder0}/other.svg`;
+        } catch { console.log('Warning: icon support button is not enabled!'); };
+        
         if (localStorage.getItem('theme').includes('light')) { 
-            try { document.getElementById('mobile_theme_button').src = 'static/images/sun.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
             document.getElementById('theme_css').innerHTML = dark; 
-            localStorage.setItem('theme','dark'); 
+            localStorage.setItem('theme','dark');
         } else if (localStorage.getItem('theme').includes('dark')) { 
-            try { document.getElementById('mobile_theme_button').src = 'static/images/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
             document.getElementById('theme_css').innerHTML = light; 
-            localStorage.setItem('theme','light'); 
-        } else {
-            console.log('Error: theme are undefined! Setting theme to light...');
-            try { document.getElementById('mobile_theme_button').src = 'static/images/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
-            document.getElementById('theme_css').innerHTML = light; 
-            localStorage.setItem('theme','light'); 
-        };
+            localStorage.setItem('theme','light'); }; 
     }; if (type === 1) {
+        try { document.getElementById('mobile_theme_button').src = `static/images/${folder1}/theme.svg`; } catch { console.log('Warning: theme button is not enabled!'); };
+        try { 
+            document.getElementById('timetable_support').src = `static/images/${folder1}/timetable.svg`;
+            document.getElementById('gtable_support').src = `static/images/${folder1}/gtable.svg`;
+            document.getElementById('other_support').src = `static/images/${folder1}/other.svg`;
+        } catch { console.log('Warning: icon support button is not enabled!'); };
+
         if (localStorage.getItem('theme').includes('light')) { 
-            try { document.getElementById('mobile_theme_button').src = 'static/images/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
             document.getElementById('theme_css').innerHTML = light;
         } else if (localStorage.getItem('theme').includes('dark')) { 
-            try { document.getElementById('mobile_theme_button').src = 'static/images/sun.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
-            document.getElementById('theme_css').innerHTML = dark; 
-        } else {
-            console.log('Error: theme are undefined! Setting theme to light...');
-            try { document.getElementById('mobile_theme_button').src = 'static/images/moon.svg';  } catch { console.log('Warning: theme button is not enabled!'); };
-            document.getElementById('theme_css').innerHTML = light; 
-            localStorage.setItem('theme','light'); 
-        }
+            document.getElementById('theme_css').innerHTML = dark; }
     } 
     } catch (e) {
-        console.log('WARN: theme function (' + e + '), trying to set light theme and reload');
+        console.log('ERROR: theme function (' + e + '), trying to set light theme and reload');
         await sleep(15);
         try {
             localStorage.setItem('theme','light');
-            try { document.getElementById('mobile_theme_button').src = 'static/images/moon.svg'; } catch { console.log('Warning: theme button is not enabled!'); };
+            try { document.getElementById('mobile_theme_button').src = `static/images/${folder1}/theme.svg`; } catch { console.log('Warning: theme button is not enabled!'); };
+            try { 
+                document.getElementById('timetable_support').src = `static/images/${folder1}/timetable.svg`;
+                document.getElementById('gtable_support').src = `static/images/${folder1}/gtable.svg`;
+                document.getElementById('other_support').src = `static/images/${folder1}/other.svg`;
+            } catch { console.log('Warning: icon support button is not enabled!'); };
             document.getElementById('theme_css').innerHTML = light;
         } catch (e) {error(601, 'CRITICAL ERROR: theme cannot load, redirect to error page (' + e + ')')}
     }
@@ -144,15 +160,15 @@ function home() {
     var outtext;
          if (dt.getHours() <= 12 && dt.getHours() > 5)  { outtext = 'Доброе утро!' } 
     else if (dt.getHours() <= 18 && dt.getHours() > 12) { outtext = 'Добрый день!' } 
-    else if (dt.getHours() <= 23 && dt.getHours() > 18) { outtext = 'Добрый вечер!'} 
+    else if (dt.getHours() <= 23 && dt.getHours() > 19) { outtext = 'Добрый вечер!'} 
     else                                                { outtext = 'Доброй ночи!' }
     output(false,`
     <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${outtext}</p></div>
     <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${pageSet('week')} неделя</p></div>
     <div class="support_table">
-        <button class="support_button" onclick="page('timetable')">Расписание</button>
-        <button class="support_button" onclick="pageSet('tablepos')">Таблица посещаемости</button>
-        <button class="support_button" onclick="page('other')">Дополнительно</button>
+        <a class="support_button" onclick="page('timetable')"><div class="support_button"><p class="support_button">Расписание</p><img class="support_button pc" src="" id="timetable_support"></div></a>
+        <a class="support_button" onclick="pageSet('tablepos')"><div class="support_button"><p class="support_button">Посещемость</p><img class="support_button pc" src="" id="gtable_support"></div></a>
+        <a class="support_button" onclick="page('other')"><div class="support_button"><p class="support_button">Дополнительно</p><img class="support_button pc" src="" id="other_support"></div></a>
     </div>
     `)
 }
@@ -172,7 +188,7 @@ function header(text, enableTheme) {
         <div class="mobile_gorisontal_void"></div>');
     if (enableTheme) { 
         document.write('<button id="theme_button" class="theme_header_button_pc" onclick="theme(0)">Cменить тему</button>'); 
-        document.write('<button id="theme_button" class="theme_header_button_mobile" onclick="theme(0)"><img style="width: 32px;" id="mobile_theme_button" src=""></button>')
+        document.write('<button id="theme_button" class="theme_header_button_mobile" onclick="theme(0)"><img style="width: 32px; height: 32px;" id="mobile_theme_button" src=""></button>')
     };
     document.write('</div><hr style="border: none; height: 1px; margin-top: 0;"></div>');
 }
@@ -198,51 +214,3 @@ function serw() {
         console.log('service worker is not supported');
       }
 }
-
-/*
-for copy
-
-
-    "icons": [
-          {
-        "src":"/static/core/manifest/logo-pwa-16.png",
-        "sizes": "16x16",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-32.png",
-        "sizes": "32x32",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-48.png",
-        "sizes": "48x48",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-72.png",
-        "sizes": "72x72",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-96.png",
-        "sizes": "96x96",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-144.png",
-        "sizes": "144x144",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src":"/static/core/manifest/logo-pwa-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-*/
