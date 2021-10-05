@@ -111,9 +111,7 @@ async function theme(type) {
     if (type === 0) {
         try { document.getElementById('mobile_theme_button').src = `static/images/${folder0}/theme.svg`; } catch { console.log('Warning: theme button is not enabled!'); };
         try { 
-            document.getElementById('timetable_support').src = `static/images/${folder0}/timetable.svg`;
             document.getElementById('gtable_support').src = `static/images/${folder0}/gtable.svg`;
-            document.getElementById('other_support').src = `static/images/${folder0}/other.svg`;
         } catch { console.log('Warning: icon support button is not enabled!'); };
         
         if (localStorage.getItem('theme').includes('light')) { 
@@ -125,9 +123,7 @@ async function theme(type) {
     }; if (type === 1) {
         try { document.getElementById('mobile_theme_button').src = `static/images/${folder1}/theme.svg`; } catch { console.log('Warning: theme button is not enabled!'); };
         try { 
-            document.getElementById('timetable_support').src = `static/images/${folder1}/timetable.svg`;
             document.getElementById('gtable_support').src = `static/images/${folder1}/gtable.svg`;
-            document.getElementById('other_support').src = `static/images/${folder1}/other.svg`;
         } catch { console.log('Warning: icon support button is not enabled!'); };
 
         if (localStorage.getItem('theme').includes('light')) { 
@@ -142,9 +138,7 @@ async function theme(type) {
             localStorage.setItem('theme','light');
             try { document.getElementById('mobile_theme_button').src = `static/images/${folder1}/theme.svg`; } catch { console.log('Warning: theme button is not enabled!'); };
             try { 
-                document.getElementById('timetable_support').src = `static/images/${folder1}/timetable.svg`;
                 document.getElementById('gtable_support').src = `static/images/${folder1}/gtable.svg`;
-                document.getElementById('other_support').src = `static/images/${folder1}/other.svg`;
             } catch { console.log('Warning: icon support button is not enabled!'); };
             document.getElementById('theme_css').innerHTML = light;
         } catch (e) {error(601, 'CRITICAL ERROR: theme cannot load, redirect to error page (' + e + ')')}
@@ -163,12 +157,9 @@ function home() {
     else if (dt.getHours() <= 23 && dt.getHours() > 19) { outtext = 'Добрый вечер!'} 
     else                                                { outtext = 'Доброй ночи!' }
     output(false,`
-    <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${outtext}</p></div>
-    <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${pageSet('week')} неделя</p></div>
+    <div class="greetings"><p style="font-size:28px; margin-bottom: 48px;">${outtext}</p></div>
     <div class="support_table">
-        <a class="support_button" onclick="page('timetable')"><div class="support_button"><p class="support_button">расписание</p><img class="support_button pc" src="" id="timetable_support"></div></a>
         <a class="support_button" onclick="pageSet('tablepos')"><div class="support_button"><p class="support_button">посещемость</p><img class="support_button pc" src="" id="gtable_support"></div></a>
-        <a class="support_button" onclick="page('other')"><div class="support_button"><p class="support_button">дополнительно</p><img class="support_button pc" src="" id="other_support"></div></a>
     </div>
     `)
 }
@@ -195,22 +186,3 @@ function header(text, enableTheme) {
 
 /* Sleep function (dont touch this!) */
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-
-/* Service worker function (dont touch!) */
-function serw() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('static/manifest/service-worker.js').then(function(registration) {
-                // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
-          }).catch(function(err) {
-            console.log(err)
-          });
-        });
-      } else {
-        console.log('service worker is not supported');
-      }
-}

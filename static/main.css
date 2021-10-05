@@ -12,11 +12,9 @@
 ::-webkit-scrollbar-thumb:hover { border-radius: 10px; background: var(--scrollbar-thumb-hover); }
 
 /* General sizes */
-html, body, .header { background-color: var(--main-bg-color); margin: 0; transition: 150ms; }
-a { text-decoration: none; cursor: pointer; }
+html, body, .header { background-color: var(--main-bg-color); margin: 0; }
+a { text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p, a, b, td, div, li, button { color: var(--main-text-color); font-family: 'Google Sans'; word-wrap: break-word; }
-h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, p::selection, a::selection, b::selection, td::selection, div::selection, svg::selection, li::selection { background-color: #85858585; }
-h1::-moz-selection, h2::-moz-selection, h3::-moz-selection, h4::-moz-selection, h5::-moz-selection, h6::-moz-selection, p::-moz-selection, a::-moz-selection, b::-moz-selection, td::-moz-selection, div::-moz-selection, svg::-moz-selection, li::-moz-selection { background-color: #858585; }
 
 /* Sizes for all devices */
 a.version { position: fixed; bottom: 0; margin: 0px 0px 0px 4px; user-select: none; opacity: 0.1; }
