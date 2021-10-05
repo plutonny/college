@@ -166,9 +166,9 @@ function home() {
     <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${outtext}</p></div>
     <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${pageSet('week')} неделя</p></div>
     <div class="support_table">
-        <a class="support_button" onclick="page('timetable')"><div class="support_button"><p class="support_button">Расписание</p><img class="support_button pc" src="" id="timetable_support"></div></a>
-        <a class="support_button" onclick="pageSet('tablepos')"><div class="support_button"><p class="support_button">Посещемость</p><img class="support_button pc" src="" id="gtable_support"></div></a>
-        <a class="support_button" onclick="page('other')"><div class="support_button"><p class="support_button">Дополнительно</p><img class="support_button pc" src="" id="other_support"></div></a>
+        <a class="support_button" onclick="page('timetable')"><div class="support_button"><p class="support_button">расписание</p><img class="support_button pc" src="" id="timetable_support"></div></a>
+        <a class="support_button" onclick="pageSet('tablepos')"><div class="support_button"><p class="support_button">посещемость</p><img class="support_button pc" src="" id="gtable_support"></div></a>
+        <a class="support_button" onclick="page('other')"><div class="support_button"><p class="support_button">дополнительно</p><img class="support_button pc" src="" id="other_support"></div></a>
     </div>
     `)
 }
@@ -187,7 +187,7 @@ function header(text, enableTheme) {
         <div class="pc_gorisontal_void"></div>\
         <div class="mobile_gorisontal_void"></div>');
     if (enableTheme) { 
-        document.write('<button id="theme_button" class="theme_header_button_pc" onclick="theme(0)">Cменить тему</button>'); 
+        document.write('<button id="theme_button" class="theme_header_button_pc" onclick="theme(0)">сменить тему</button>'); 
         document.write('<button id="theme_button" class="theme_header_button_mobile" onclick="theme(0)"><img style="width: 32px; height: 32px;" id="mobile_theme_button" src=""></button>')
     };
     document.write('</div><hr style="border: none; height: 1px; margin-top: 0;"></div>');
