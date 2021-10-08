@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
-        <title>Ошибка 604</title>
+        <title>BETA VERSION</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Plutonny">
+        <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta name="description" content="Дополнительная информация группы КСК-11">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
         <link rel="icon" href="static/images/favicon.svg">
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="static/main.css">
         <script type="text/javascript" src="static/frames.js"></script>
         <style id="theme_css"></style>
+        <style id="timetable_special_css"></style>
         <noscript style="font-size: 32px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             Если ты читаешь этот текст, то у тебя выключен JavaScript браузером, для отоброжения контента на этом сайте необходимо его включить. Есл вы считаете что JavaScript вам не нужен, то напишите разработчику, чтобы он делал сайт без JavaScript...
         </noscript>
     </head>
     <body>
-        <div class="error">
-            <h1 style="text-align: center; margin-top: 176px;">
-                Произошла критическая ошибка!
-            </h1>
-            <div style="margin-top:32px; display: flex; justify-content: center;">
-                <button style="border: 1px solid var(--main-text-color); border-radius: 10px; height: 32px; width: 140px; cursor: pointer; background-color: var(--main-bg-volor);" onclick="activities('backhome')">
-                    На главную
-                </button>
-            </div>
-            <p style="text-align: center; margin-top: 32px;">
-                Подробнее: ошибка 604 - начальная функция взаимодействия со страницами сработала неккоректно. Для большей информации смотреть консоль.
-            </p>
-        </div>
+        <script>
+            enableLogger();
+            page('timetable');
+            theme(1);
+        </script>
     </body>
 </html>

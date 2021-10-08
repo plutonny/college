@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
-        <title>Ошибка 604</title>
+        <title>BETA VERSION</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Plutonny">
+        <meta name="keywords" content="КСК-11, кск, кск 11, акт кск, акт">
+        <meta name="description" content="Расписание группы КСК-11">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
         <link rel="icon" href="static/images/favicon.svg">
         <link rel="manifest" href="manifest.json">
@@ -16,18 +18,10 @@
         </noscript>
     </head>
     <body>
-        <div class="error">
-            <h1 style="text-align: center; margin-top: 176px;">
-                Произошла критическая ошибка!
-            </h1>
-            <div style="margin-top:32px; display: flex; justify-content: center;">
-                <button style="border: 1px solid var(--main-text-color); border-radius: 10px; height: 32px; width: 140px; cursor: pointer; background-color: var(--main-bg-volor);" onclick="activities('backhome')">
-                    На главную
-                </button>
-            </div>
-            <p style="text-align: center; margin-top: 32px;">
-                Подробнее: ошибка 604 - начальная функция взаимодействия со страницами сработала неккоректно. Для большей информации смотреть консоль.
-            </p>
-        </div>
+        <script>
+            enableLogger();
+            page('other');
+            theme(1);
+        </script>
     </body>
 </html>
