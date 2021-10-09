@@ -269,12 +269,13 @@ function timetable() {
         <p class="timetable_warning"><b class="timetable_warning">примечание:</b> изменения расписания и дистанционка здесь не отображаются, для этого смотри беседу "КСК-11" в VK</p>
     </div>
     `);
-    timetable_logic('day');
+    timetable_logic('week');
 }
 
 /* returned day timetable */
 function get_timetable(type) {
-    var dayret = 
+    var dayret = '<p class="timetable_day">пока расписание на день недоступно, смотри расписание на неделю</p>';
+    var dayret_rez = 
         [`<table class="timetable_day">
             <tr class="timetable_day_line"> <td rowspan="2" class="timetable_day_num">1</td> <td class="timetable_day_name yellow">Литература</td> <td class="timetable_day_cab yellow">404</td> </tr>
             <tr class="timetable_day_line"> <td class="timetable_day_name green">Физика</td> <td class="timetable_day_cab green">303</td> </tr>
@@ -379,8 +380,8 @@ function get_timetable(type) {
         </table>
     `;
     if (type == 'day') {
-        if (dt.getHours() < 15) { return '<p class="timetable_day">сегодня:</p>' + dayret[dt.getDay() - 1] }
-        else { return '<p class="timetable_day">завтра:</p>' + dayret[dt.getDay()] }
+        if (dt.getHours() < 15) { return '<p class="timetable_day">сегодня:</p>' + dayret/*[dt.getDay() - 1]*/ }
+        else { return '<p class="timetable_day">завтра:</p>' + dayret/*[dt.getDay()]*/ }
     }
     else if (type == 'week') { return weekret }
 }
