@@ -6,21 +6,18 @@
 @font-face { font-family:'Google Sans'; font-style:normal; font-weight:500; font-display:block; src:url(fonts/ps5.woff2)format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
 /* Scrollbar only to Chrome users */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--main-bg-color); }
-::-webkit-scrollbar-thumb { border-radius: 10px; background: var(--scrollbar-thumb); }
-::-webkit-scrollbar-thumb:hover { border-radius: 10px; background: var(--scrollbar-thumb-hover); }
+::-webkit-scrollbar { width: 0px; height: 0px; }
 
 /* General sizes */
 html, body, .header { background-color: var(--main-bg-color); margin: 0; transition: 150ms; }
 html, body { overflow-x: hidden; }
 a { text-decoration: none; cursor: pointer; }
 h1, h2, h3, h4, h5, h6, p, a, b, td, div, li, button { color: var(--main-text-color); font-family: 'Google Sans'; word-wrap: break-word; }
-h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, p::selection, a::selection, b::selection, td::selection, div::selection, svg::selection, li::selection, img::selection { background-color: #85858585; }
-h1::-moz-selection, h2::-moz-selection, h3::-moz-selection, h4::-moz-selection, h5::-moz-selection, h6::-moz-selection, p::-moz-selection, a::-moz-selection, b::-moz-selection, td::-moz-selection, div::-moz-selection, svg::-moz-selection, li::-moz-selection, img::-moz-selection { background-color: #858585; }
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, p::selection, a::selection, b::selection, td::selection, div::selection, svg::selection, li::selection, img::selection, button::selection { background-color: #85858585; }
+h1::-moz-selection, h2::-moz-selection, h3::-moz-selection, h4::-moz-selection, h5::-moz-selection, h6::-moz-selection, p::-moz-selection, a::-moz-selection, b::-moz-selection, td::-moz-selection, div::-moz-selection, svg::-moz-selection, li::-moz-selection, img::-moz-selection, button::-moz-selection { background-color: #858585; }
 a.version { position: fixed; bottom: 0; margin: 0px 0px 0px 4px; user-select: none; opacity: 0.1; }
 
-/* @media (min-width: 701px) { /* Sizes for PC */ /* EDIT TO 901 when create 3rd style */
+/* @media (min-width: 901px) { /* Sizes for PC */
     /* .mobile { display: none; }
 
     button { background-color: var(--header-bg-color); }
@@ -43,36 +40,32 @@ a.version { position: fixed; bottom: 0; margin: 0px 0px 0px 4px; user-select: no
     .support_table { width: 100%; display: flex; margin-top: 64px; justify-content: center; flex-direction: row; flex-wrap: nowrap; justify-content: space-evenly; }
     div.support_button { text-align: center; width: 230px; height: 64px; border: var(--main-text-color) 1px solid; border-radius: 20px; padding: 30px 12px 220px 12px; }
     p.support_button { font-size: 26px; margin: 0; } div.margin52 { margin-top: 52px; }
-
-} @media (max-width: 700px) { /* Sizes for MOBILE */ /* EDIT TO 550 when create 3rd style */
-    .pc { display: none; }
+} @media (min-width: 901px) { /* Middle size */
+/*} @media (max-width: 550px) { /* Sizes for MOBILE */
+    .pc, .logo_text_header, .logo_dot_header { display: none; }
 
     button { background-color: var(--main-bg-color); }
     button:active, div.button_page:active { background-color: var(--button-bg-color-active); }
-    a:hover { color: var(--main-text-color); }
-    a:after { background-color: var(--main-text-color); }
+    a:hover, a:after { color: var(--main-text-color); }
     a:active { color: var(--active-text-color); }
-    .header { background-color: var(--main-bg-color); }
     div.button_page { border: 1px solid var(--main-text-color); }
     hr { color: var(--main-text-color); background-color: var(--main-text-color); width: 95%; }
+    .emoji { margin: -2px -18px 0px -4px; transform: scale(0.5, 0.5); }
 
-    div.pc_gorisontal_void { display: none; }
     div.mobile_gorisontal_void { margin-right: auto; }
-    .logo_text_header, .logo_dot_header { display: none; }
     .theme_header_button, .back_button { transition: 150ms; position: absolute; margin-left: 14px; margin-top: 14px; border-radius: 100px; border: none; cursor: pointer; padding: 2px 3px 0px 3px; }
-
-    .header {  height: 54px; }
+    .header {  height: 48px; background-color: var(--main-bg-color); }
     h1.helper_text { font-size: 32px; text-align: center; padding-top: 32px; padding-bottom: 32px; }
-    .greetings { margin-top: 48px; margin-left: 24px; }
+    .greetings { margin-top: 72px; margin-left: 24px; }
     .dateweek { margin-left: 24px; }
 
     .support_table { margin: 32px 24px 32px 24px; display: flex; flex-direction: column; flex-wrap: nowrap; }
-    div.support_button { height: 64px; border: var(--main-text-color) 1px solid; border-radius: 20px; padding: 0px 0px 18px 0px; }
+    div.support_button { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; height: 64px; border: var(--main-text-color) 1px solid; border-radius: 20px; padding: 0px 0px 18px 0px; }
     p.support_button { font-size: 26px; padding: 12px 0px 0px 12px; margin: 0; } div.margin24 { margin-top: 24px; }
 
     .timetable_greetings { margin-top: 48px; margin-bottom: 0px; text-align: center; }
-    div.timetable_button { border: 1px solid var(--main-text-color); border-radius: 24px; padding: 4px; margin: 24px; display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: space-between; align-items: center; }
-    button.timetable_button { height: 24px; width: 47%; border: 1px solid var(--main-text-color); border-radius: 16px; }
+    div.timetable_button { border: 1px solid var(--main-text-color); border-radius: 24px; padding: 4px; margin: 24px 24px 48px 24px; display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: space-between; align-items: center; }
+    button.timetable_button { height: 24px; width: 32%; border: 1px solid var(--main-text-color); border-radius: 16px; }
     div.timetable_warning { margin: 24px; }
     p.timetable_warning { font-size: 18px; }
     b.timetable_warning { font-size: 20px; }
@@ -80,20 +73,20 @@ a.version { position: fixed; bottom: 0; margin: 0px 0px 0px 4px; user-select: no
     .yellow { background-color: var(--timetable-yellow) !important; }
     .green { background-color: var(--timetable-green) !important; }
     
-    p.timetable_day { margin-top: 48px; margin-left: 24px; font-size: 22px; }
+    p.timetable_day, p.timetable_week { margin-top: 24px; margin-left: 24px; font-size: 22px; }
     table.timetable_day { width: 80%; text-align: center; border-collapse: collapse; margin: auto; background-color: var(--timetable-bg); }
     /* tr.timetable_day_line {  } */
     td.timetable_day_num { border: 1px solid var(--main-text-color); width: 16px; height: 48px; }
     td.timetable_day_name { border: 1px solid var(--main-text-color); }
     td.timetable_day_cab { border: 1px solid var(--main-text-color); width: 78px; }
-
-    table.timetable_week { width: 80%; text-align: center; border-collapse: collapse; margin: auto; }
-    /* tr.timetable_week_weekname {  } */
+    table.timetable_week { width: 80%; text-align: center; border-collapse: collapse; margin: auto; margin-bottom: 16px; }
+    /* tr.timetable_week_weekname {  } tr.timetable_week_line {  } */
     td.timetable_week_weekname { font-size: 18px; padding-top: 8px; }
-    /* tr.timetable_week_line {  } */
     td.timetable_week_num { border: 1px solid var(--main-text-color); width: 16px; height: 48px; background-color: var(--timetable-bg); }
     td.timetable_week_name { border: 1px solid var(--main-text-color); background-color: var(--timetable-bg); }
     td.timetable_week_cab { border: 1px solid var(--main-text-color); width: 78px; background-color: var(--timetable-bg); }
+    div.timetable_alerts { margin: 24px;}
+    p.timetable_alerts { font-size: 18px; margin: 12px 0px; }
 
     div.other { margin: 24px; }
     div.other_container { margin-top: 64px; }

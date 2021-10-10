@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ошибка 602</title>
+        <title id="title_page">Ошибка 602</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Plutonny">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
-        <link rel="icon" href="static/images/favicon.svg">
+        <meta name="theme-color" id="theme-color" content="#f0f0f0">
+        <link rel="icon" href="static/images/favicon.png">
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="static/main.css">
-        <script type="text/javascript" src="static/frames-min.js"></script>
+        <script type="text/javascript" src="static/frames.js"></script>
         <style id="theme_css"></style>
         <noscript style="font-size: 32px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             Если ты читаешь этот текст, то у тебя выключен JavaScript браузером, для отоброжения контента на этом сайте необходимо его включить. Есл вы считаете что JavaScript вам не нужен, то напишите разработчику, чтобы он делал сайт без JavaScript...
@@ -21,8 +22,8 @@
                 Произошла критическая ошибка!
             </h1>
             <div style="margin-top:32px; display: flex; justify-content: center;">
-                <button style="border: 1px solid var(--main-text-color); border-radius: 10px; height: 32px; width: 140px; cursor: pointer; background-color: var(--main-bg-volor);" onclick="activities('backhome')">
-                    На главную
+                <button style="border: 1px solid var(--main-text-color); border-radius: 10px; height: 32px; width: 140px; cursor: pointer; background-color: var(--main-bg-volor);" onclick="activities('reload')">
+                    перезагрузить
                 </button>
             </div>
             <p style="text-align: center; margin-top: 32px;">
