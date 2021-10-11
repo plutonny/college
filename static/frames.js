@@ -184,6 +184,7 @@ async function theme(type) {
                 document.getElementById('other_support').src = `static/images/${folder1}/other.svg`;
             } catch { if (BETA) { console.log('Warning: icon support button is not enabled!'); } };
             document.getElementById('theme_css').innerHTML = light; document.getElementById('theme-color').content = '#f0f0f0';
+            activities('reload')
         } catch (e) {error(601, 'CRITICAL ERROR: theme cannot load, redirect to error page (' + e + ')')}
     }
 }
@@ -399,13 +400,13 @@ function get_timetable(type) {
                 <td class="timetable_${type}_name">Глущенко</td> <td class="timetable_${type}_cab"></td>
             </tr>
         </table>`];
-    var timetable_alerts = `<div class="timetable_alerts">
-        <p class="timetable_alerts"><b>1-я пара:</b> 8:30-9:15, 9:20-10:05</p>
-        <p class="timetable_alerts"><b>2-я пара:</b> 10:15-11:00, 11:05-11:50</p>
-        <p class="timetable_alerts"><b>перерыв:</b> 11:50-12:35</p>
-        <p class="timetable_alerts"><b>3-я пара:</b> 12:35-13:20, 13:25-14:10</p>
-        <p class="timetable_alerts"><b>4-я пара:</b> 14:20-15:05, 15:10-15:55</p>
-        <p class="timetable_alerts"><b>5-я пара:</b> 16:05-16:50, 16:55-17:40</p>
+    var timetable_alerts = `<div class="timetable_${type}">
+        <p class="timetable_${type}"><b>1-я пара:</b> 8:30-9:15, 9:20-10:05</p>
+        <p class="timetable_${type}"><b>2-я пара:</b> 10:15-11:00, 11:05-11:50</p>
+        <p class="timetable_${type}"><b>перерыв:</b> 11:50-12:35</p>
+        <p class="timetable_${type}"><b>3-я пара:</b> 12:35-13:20, 13:25-14:10</p>
+        <p class="timetable_${type}"><b>4-я пара:</b> 14:20-15:05, 15:10-15:55</p>
+        <p class="timetable_${type}"><b>5-я пара:</b> 16:05-16:50, 16:55-17:40</p>
     </div>`;
     if (type == 'day')  {
         if (dt.getDay() == 0) {
