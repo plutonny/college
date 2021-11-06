@@ -9,41 +9,101 @@
         <meta name="description" content="Расписание группы КСК-11">
         <meta name="theme-color" id="theme-color" content="#f0f0f0">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
-        <link rel="icon" href="static/images/favicon.png">
+        <script type="text/javascript"       src="../storage/solar.js"></script>
+        <script type="text/javascript"       src="../storage/luxon.js"></script>
+        
+        <script type="text/javascript"       src="../storage/debug.js"></script>
+        <script type="text/javascript"       src="../storage/frames.js"></script>
+        <link rel="icon"                    href="../storage/images/college.png">
+        <link rel="stylesheet" media="all"  href="../storage/main.css">
         <link rel="manifest" href="manifest.json">
-        <link rel="stylesheet" href="static/main.css">
-        <script type="text/javascript" src="static/frames.js"></script>
         <style id="theme_css"></style>
+        
+        <style>
+            div.other { margin: 24px; display: flex; text-align: center; }
+            div.other_container { margin-top: 48px; display: flex; }
+            p.other_gen { margin-bottom: 12px; font-size: 22px; }
+            p.other { margin: 0px; font-size: 16px; }
+            a.other { text-decoration: underline 2px solid var(--main-text-color); }
+
+            p.other_table_gen { margin-top: 64px; text-align: center; margin-bottom: 16px; font-size: 22px; }
+            table.other_table { text-align: center; border-collapse: collapse; margin: auto; background-color: var(--timetable-bg); }
+            td.other_table { border: 1px solid var(--main-text-color); height: 43px; padding: 0px 2px; }
+            .other_table_num { width: 15px; border: 1px solid var(--main-text-color); }
+        </style>
         <noscript>
             <div style="font-size: 32px; text-align: center;">
                 <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
-                <p>Функционал сайта практически недоступен:</p>
-                <div class="other">
-                    <div class="other_container">
-                        <p class="other_gen"><b>электронная почта группы:</b></p>
-                        <p class="other">логин: csc11akt@gmail.com</p>
-                        <p class="other">пароль: Arhangelsk!12345!akt</p>
-                    </div>
-                    <div class="other_container">
-                        <p class="other_gen"><b>номера телефонов для связи:</b></p>
-                        <p class="other">Глеба Сергеевича: <a class="other" href="tel:+79600192697">+7 (960) 019-26-97</a></p>
-                        <p class="other">старосты: <a class="other" href="tel:+79910540236">+7 (991) 054-02-36</a></p>
-                    </div>
-                    <div class="other_container">
-                        <p class="other_gen"><b>социальные сети для связи:</b></p>
-                        <p class="other">Глеба Сергеевича: <a class="other" target="_blank" href="https://vk.com/small_tip">VK</a></p>
-                        <p class="other">старосты: <a class="other" target="_blank" href="https://vk.com/pltny">VK</a>, <a class="other" target="_blank" href="https://telegram.me/plutonny">telegram</a></p>
-                        <p class="other">зам. старосты: <a class="other" target="_blank" href="https://vk.com/helldeline">VK</a></p>
-                    </div>
-                </div>
+                <p>Функционал сайта практически недоступен</p>
             </div>
         </noscript>
     </head>
     <body>
+        <div class="modal" id="modal"></div>
         <script>
-            enableLogger();
-            page('other');
-            theme(1);
+            header(`Группа КСК-11`, `дополнительно${betatext}`, `home`, false, true, true)
         </script>
+        <div class="other_page">
+            <div class="other_table">
+                <p class="other_table_gen"><b>Рассадка:</b></p>
+                <table class="other_table">
+                    <tr class="other_table_num">
+                        <td class="other_table_num">№</td>
+                        <td class="other_table_num">1</td>
+                        <td class="other_table_num">2</td>
+                        <td class="other_table_num">3</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">1</td>
+                        <td class="other_table">Никитин<br>Павозков</td>
+                        <td class="other_table">Ивин<br><p style="color: var(--timetable-bg); margin: 0px;">лох</p></td>
+                        <td class="other_table">Кузнецов<br>Савинов</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">2</td>
+                        <td class="other_table">Никонов<br>Поликевич</td>
+                        <td class="other_table">Адилов<br>Едемский</td>
+                        <td class="other_table">Чебыкин<br>Михеева</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">3</td>
+                        <td class="other_table">Петров<br>Ципилев</td>
+                        <td class="other_table">Сибирцев<br>Кубышкина</td>
+                        <td class="other_table">Печинкина<br>Каралин</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">4</td>
+                        <td class="other_table">Барзаногова<br>Бойко</td>
+                        <td class="other_table">Дейнега<br>Некрасов</td>
+                        <td class="other_table">Алексеев<br>Клюкин</td>
+                    </tr>
+                    <tr class="other_table">
+                        <td class="other_table">5</td>
+                        <td class="other_table">Байбородин<br><p style="color: var(--timetable-bg); margin: 0px;">лох</p></td>
+                        <td class="other_table"></td>
+                        <td class="other_table"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="other">
+                <div class="other_container">
+                    <p class="other_gen"><b>Электронная почта группы:</b></p>
+                    <p class="other">Логин: csc11akt@gmail.com</p>
+                    <p class="other">Пароль: Arhangelsk!12345!akt</p>
+                </div>
+                <div class="other_container">
+                    <p class="other_gen"><b>Номера телефонов для связи:</b></p>
+                    <p class="other">Глеба Сергеевича: <a class="other" href="tel:+79600192697">+7 (960) 019-26-97</a></p>
+                    <p class="other">Старосты: <a class="other" href="tel:+79910540236">+7 (991) 054-02-36</a></p>
+                </div>
+                <div class="other_container">
+                    <p class="other_gen"><b>Социальные сети для связи:</b></p>
+                    <p class="other">Глеба Сергеевича: <a class="other" target="_blank" href="https://vk.com/small_tip">ВКонтакте</a></p>
+                    <p class="other">Старосты: <a class="other" target="_blank" href="https://vk.com/pltny">ВКонтакте</a>, <a class="other" target="_blank" href="https://telegram.me/plutonny">Telegram</a></p>
+                    <p class="other">Зам. старосты: <a class="other" target="_blank" href="https://vk.com/helldeline">ВКонтакте</a></p>
+                </div>
+            </div>
+        </div>
+        <script>theme(1); settings('write', 'otherpageversion', 55); enableLogger()</script>
     </body>
 </html>

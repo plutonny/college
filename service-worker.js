@@ -33,8 +33,7 @@ self.addEventListener('install', function(event) {
                                'home.html',
                                'timetable.html',
                                'other.html',
-                               'static/*',
-                               'pwa-im/*',
+                               'icon-pwa.png',
                            ]
                            cache.addAll(urlsToCache)
                            console.log('cached');
