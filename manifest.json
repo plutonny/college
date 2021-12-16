@@ -1,10 +1,11 @@
 {
+  "version": "2.1",
   "short_name": "КСК-11",
-  "name": "Сайт группы КСК-11",
-  "icons": [ { "src": "icon-pwa.png",  "sizes": "512x512", "type": "image/png" } ],
+  "name": "Страница группы КСК-11",
+  "icons": [ { "src": "icon-pwa.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" } ],
   "start_url": "home.html",
   "background_color": "#202020",
-  "theme_color": "#111111",
+  "theme_color": "#202020",
   "display": "standalone",
   "orientation": "portrait"
 }

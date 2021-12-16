@@ -13,12 +13,18 @@
         <script type="text/javascript"       src="../storage/luxon.js"></script>
 
         <script type="text/javascript"       src="../storage/debug.js"></script>
-        <script type="text/javascript"       src="../storage/frames.js"></script>
+        <script type="text/javascript"       src="../storage/frames-min.js"></script>
         <link rel="icon"                    href="../storage/images/college.png">
         <link rel="stylesheet" media="all"  href="../storage/main.css">
         <link rel="manifest" href="manifest.json">
         <style id="theme_css"></style>
         <style id="timetable_special_css"></style>
+
+        <!-- INJECTED SEASON CODE, delete after -->
+        <script type="text/javascript"       src="/storage/new-year-theme/season.js"></script>
+        <style id="nyttc"></style>
+        <style id="nytsbb"></style>
+        <!-- INJECTED SEASON CODE, delete after -->
 
         <style>
             .timetable_greetings { margin-top: 48px; margin-bottom: 12px; text-align: center; }
@@ -30,14 +36,14 @@
 
             table.timetable_day { width: 80%; text-align: center; border-collapse: collapse; margin: auto; background-color: var(--timetable-bg); }
             tr.timetable_day_line, tr.timetable_week_weekname, tr.timetable_week_line { height: 25px; }
-            td.timetable_day_num { border: 1px solid var(--main-text-color); width: 16px; height: 48px; }
-            td.timetable_day_name { border: 1px solid var(--main-text-color); width: 256px; }
-            td.timetable_day_cab { border: 1px solid var(--main-text-color); width: 78px; }
+            td.timetable_day_num { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 16px; height: 48px; }
+            td.timetable_day_name { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 256px; }
+            td.timetable_day_cab { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 78px; }
             table.timetable_week { width: 80%; text-align: center; border-collapse: collapse; margin: auto; margin-bottom: 16px; }
-            td.timetable_week_weekname { font-size: 18px; padding-top: 8px; }
-            td.timetable_week_num { border: 1px solid var(--main-text-color); width: 16px; height: 48px; background-color: var(--timetable-bg); }
-            td.timetable_week_name { border: 1px solid var(--main-text-color); width: 256px; background-color: var(--timetable-bg); }
-            td.timetable_week_cab { border: 1px solid var(--main-text-color); width: 78px; background-color: var(--timetable-bg); }
+            td.timetable_week_weekname { font-family: 'Montserrat'; font-size: 18px; padding-top: 8px; }
+            td.timetable_week_num { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 16px; height: 48px; background-color: var(--timetable-bg); }
+            td.timetable_week_name { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 256px; background-color: var(--timetable-bg); }
+            td.timetable_week_cab { font-family: 'Montserrat'; border: 1px solid var(--main-text-color); width: 78px; background-color: var(--timetable-bg); }
             div.timetable_alerts { margin: 24px; }
             p.timetable_alerts { font-size: 18px; margin: 12px 0px; }
         </style>
@@ -51,7 +57,9 @@
     <body>
         <div class="modal" id="modal"></div>
         <script>
-            header(`Группа КСК-11`, `расписание${betatext}`, `home`, false, true, false);
+            var ndt = new Date(), dec31 = new Date(2021, 11, 31)
+            if (!BETA) { headertext = 'расписание' }
+            header(2, `Группа КСК-11`, `${headertext}`, `home`, false, true, false);
             var weeknameab = ''; if (weekname == 'зеленая') { weeknameab += 'желтая' } else if (weekname == 'желтая') { weeknameab += 'зеленая' }
             var timetable_name = ''; if ((dt.getDay() == 0) || (dt.getDay() == 6 && dt.getHours() > 14)) { timetable_name += `${weekname} неделя, <br class="mobile">следующая ${weeknameab}` } else (timetable_name += `${weekname} неделя`)
             /**
@@ -229,22 +237,26 @@
                 else { con('warn', 'Warn: timetable function getting uncaught variables') }
                 } catch (e) { con(`error', 'ERROR: timetable function have problem (${e})`) }
             }
-            output(false, `
-            <div class="timetable_greetings">
-                <p style="font-size:28px; margin:0px;" class="timetable_weekname_head">${timetable_name}</p>
-                <div class="timetable_button">
-                    <button class="timetable_button timetable_button_day" onclick="timetable_logic('day')">день</button>
-                    <button class="timetable_button timetable_button_alerts" onclick="timetable_logic('alerts')">звонки</button>
-                    <button class="timetable_button timetable_button_week" onclick="timetable_logic('week')">неделя</button>
+            if (ndt < dec31) { 
+                output(false, `
+                <div class="timetable_greetings">
+                    <p style="font-size:28px; margin:0px;" class="timetable_weekname_head">${timetable_name}</p>
+                    <div class="timetable_button">
+                        <button class="timetable_button timetable_button_day" onclick="timetable_logic('day')">день</button>
+                        <button class="timetable_button timetable_button_alerts" onclick="timetable_logic('alerts')">звонки</button>
+                        <button class="timetable_button timetable_button_week" onclick="timetable_logic('week')">неделя</button>
+                    </div>
                 </div>
-            </div>
-            <div class="timetable_table">
-                ${get_timetable('day')}
-                ${get_timetable('week')}
-                ${get_timetable('alerts')}
-            </div>`);
+                <div class="timetable_table">
+                    ${get_timetable('day')}
+                    ${get_timetable('week')}
+                    ${get_timetable('alerts')}
+                </div>`);
+            } else {
+                output(false, '<p style="font-size:28px; margin-top:48px; text-align:center;" class="timetable_weekname_head">Расписание пока недоступно</p>')
+            }
             theme(1); timetable_logic('day')
-            settings('write', 'timetablepageversion', 53)
+            settings('write', 'TimetableBuildPage', 56)
             enableLogger()
         </script>
         <div class="warning">

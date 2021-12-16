@@ -34,6 +34,7 @@ self.addEventListener('install', function(event) {
                                'timetable.html',
                                'other.html',
                                'icon-pwa.png',
+                               '../storage/*',
                            ]
                            cache.addAll(urlsToCache)
                            console.log('cached');
