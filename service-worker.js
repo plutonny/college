@@ -1,4 +1,4 @@
-var BETA = false;
+var BETA = true;
 
 var CACHE_NAME = '';
 
@@ -30,11 +30,7 @@ self.addEventListener('install', function(event) {
                        })
                        .then(assets => {
                            const urlsToCache = [
-                               'home.html',
-                               'timetable.html',
-                               'other.html',
                                'icon-pwa.png',
-                               '../storage/*',
                            ]
                            cache.addAll(urlsToCache)
                            console.log('cached');

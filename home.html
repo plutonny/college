@@ -132,5 +132,18 @@
             ) }
             activities('beta')
         </script>
+        <script>
+            /*
+            ONLY RELEASE (diable site 29dec-8jan)
+            */
+            var cleardatestart = new Date(2021, 11, 28), cleardateend = new Date(2022, 0, 9);
+            if (cleardatestart < dt && dt < cleardateend) {
+                var st = '', c = settings('get', 'username'); if (!(c == null || c == '')) { st += `, ${settings('get', 'username')}` }
+                document.body.innerHTML = `<h1 style="text-align: center; margin: 48px;">Привет${st}!</h1>
+                <p style="margin: 32px; text-align: center;">На данный момент на сайте готовится обновление</p>
+                <p style="margin: 32px; text-align: center;">Настоятельно рекомендую удалить приложение чтобы после обновления не было ошибок</p>
+                <p style="margin: 32px; text-align: center;">Если вам потребуется расписание, то оно <a style="text-decoration: underline;" href="timetable.html">здесь</a></p>`
+            }
+        </script>
     </body>
 </html>
