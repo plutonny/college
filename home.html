@@ -19,12 +19,6 @@
         <link rel="manifest" href="manifest.json">
         <style id="theme_css"></style>
 
-        <!-- INJECTED SEASON CODE, delete after -->
-        <script type="text/javascript"       src="/storage/new-year-theme/season.js"></script>
-        <style id="nyttc"></style>
-        <style id="nytsbb"></style>
-        <!-- INJECTED SEASON CODE, delete after -->
-
         <noscript>
             <div style="font-size: 32px; text-align: center;">
                 <p>Если ты читаешь этот текст, то у тебя отключен или не поддерживается браузером JavaScript</p>
@@ -33,28 +27,17 @@
         </noscript>
     </head>
     <body>
-        <!-- INJECTED SEASON CODE, delete after -->
-        <script>newyear('header_garland_mobile')</script>
-        <!-- INJECTED SEASON CODE, delete after -->
         <div class="modal" id="modal"></div>
         <script>
-            var ndt = new Date(), dec29 = new Date(2021, 11, 29), jan05 = new Date(2022, 0, 5)
-
             if (!BETA) { headertext = 'главная' }
             header(2, `Группа КСК-11`, `${headertext}`, `home`, true, false, false);
             var un = '', c = settings('get', 'username'); if (!(c == null || c == '')) { un += `, <br class="mobile">${settings('get', 'username')}` }
             var month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
             var ot;
-            /* INJECTED SEASON CODE, delete after */
-            if (dec29 > ndt && ndt < jan05) {
-                     if (dt.getHours() >= 5  && dt.getHours() < 12) { ot = `Доброе утро` } 
-                else if (dt.getHours() >= 12 && dt.getHours() < 17) { ot = `Добрый день` } 
-                else if (dt.getHours() >= 17 && dt.getHours() < 22) { ot = `Добрый вечер`} 
-                else                                                { ot = `Доброй ночи` }
-            } else {
-                ot = `С Новым годом`
-            }
-            /* INJECTED SEASON CODE, delete after */
+                 if (dt.getHours() >= 5  && dt.getHours() < 12) { ot = `Доброе утро` } 
+            else if (dt.getHours() >= 12 && dt.getHours() < 17) { ot = `Добрый день` } 
+            else if (dt.getHours() >= 17 && dt.getHours() < 22) { ot = `Добрый вечер`} 
+            else                                                { ot = `Доброй ночи` }
             output(false,`
             <div class="greetings"><p style="font-size:28px; margin-bottom:8px;">${ot}${un}!</p></div>
             <div class="dateweek"><p style="font-size:18px; margin-top:4px;">${dt.getDate()} ${month[dt.getMonth()]}, ${weekname} неделя</p></div>
@@ -109,41 +92,7 @@
         </div>
         <script>
             theme(1); settings('write', 'HomeBuildPage', 67); enableLogger();
-            if (settings('get', 'nodisplayupdate21') != 'true' || BETA) { modal('max', 
-                `<style>div.modal { position: fixed; height: 100%; width: 100%; background-color :#40404075; }</style>
-                <div class="update_modal">
-                    <h2 class="update_modal" style="font-family: 'Montserrat' !important; text-align: center; margin:16px;">Вышло обновление!</h2>
-                    <h1 class="update_modal" style="font-family: 'Montserrat' !important; text-align: center; margin:2px; font-size: 52px">${VERSION}</h1>
-                    <b style="font-family: 'Montserrat' !important; margin-left:16px;" class="update_modal">Изменения:</b>
-                    <ul style="margin-left:12px;" class="update_modal">
-                        <li class="update_modal" style="font-family: 'Montserrat' !important;">Немного косметических изменений</li>
-                        <li class="update_modal" style="font-family: 'Montserrat' !important;">Новый значок приложения</li>
-                        <li class="update_modal" style="font-family: 'Montserrat' !important;">Новогодняя тема</li>
-                        <li class="update_modal" style="font-family: 'Montserrat' !important;">И ещё по мелочи :)</li>
-                    </ul>
-                    <p style="margin-left:22px;margin-right:22px;">
-                        <b style="font-family: 'Montserrat' !important;">Переустановите приложение, чтобы избежать ошибок! </b>
-                        `/*<a href="support.html?q=reinstall" style="font-family: 'Montserrat' !important; text-decoration: underline 2px solid var(--main-text-color);">Как это сделать?</a>*/+`
-                    </p>
-                    <div style="display:flex;justify-content:center;">
-                        <button style="font-family: 'Montserrat' !important; cursor: pointer; border: 2px solid var(--main-text-color); border-radius: 24px; height: 36px; font-size: 17px; width: 256px; margin: 4px 16px 16px 16px;" onclick="settings('write', 'nodisplayupdate21', 'true'); document.getElementById('modal').innerHTML = ''; theme(1)">Больше не показывать</button>
-                    </div>
-                </div>`
-            ) }
             activities('beta')
-        </script>
-        <script>
-            /*
-            ONLY RELEASE (diable site 29dec-8jan)
-            */
-            var cleardatestart = new Date(2021, 11, 28), cleardateend = new Date(2022, 0, 9);
-            if (cleardatestart < dt && dt < cleardateend) {
-                var st = '', c = settings('get', 'username'); if (!(c == null || c == '')) { st += `, ${settings('get', 'username')}` }
-                document.body.innerHTML = `<h1 style="text-align: center; margin: 48px;">Привет${st}!</h1>
-                <p style="margin: 32px; text-align: center;">На данный момент на сайте готовится обновление</p>
-                <p style="margin: 32px; text-align: center;">Настоятельно рекомендую удалить приложение чтобы после обновления не было ошибок</p>
-                <p style="margin: 32px; text-align: center;">Если вам потребуется расписание, то оно <a style="text-decoration: underline;" href="timetable.html">здесь</a></p>`
-            }
         </script>
     </body>
 </html>
